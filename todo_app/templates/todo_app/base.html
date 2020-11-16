@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+
+
+<title>Todo website</title>
+
+
+{% if user.is_authenticated%}
+
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-danger bg-warning" >
+    <form  action="{% url 'current_todos'%}" >         
+{% csrf_token %}                                     
+<button type="submit" class="btn btn-warning">your todos</button> 
+</form>
+<form action="{% url 'list_completed'%}">  
+ {% csrf_token %} 
+<button type="submit" class="btn btn-warning">completed todos</button>
+</form>
+<form action="{% url 'todos'%}" > 
+ {% csrf_token %} 
+<button type="submit" class="btn btn-warning"> add todo</button>
+</form>
+<div class="divider"> </div>
+
+ <form method="POST" action="{% url 'logout'%}">
+  <div style = "position:relative; left:660px; ">  
+  {% csrf_token %} 
+   <button  type="submit" class="btn btn-info" >logout</button>
+   </div>  
+   </form>
+  </div>
+  </nav>
+ 
+
+
+
+<br>
+<br>
+
+
+{% else %}
+
+
+
+<div class="container" >
+  <nav class="navbar navbar-expand-lg navbar-danger bg-warning  :102px" style="width: 1210px;  text-align: left; ">
+<form action="{% url 'signupuser'%}" >         
+{% csrf_token %}                                     
+<button type="submit" class="btn btn-warning " >Sign up</button>
+</form>
+
+<form  action="{% url 'login'%}" >       
+{% csrf_token %}                                    
+<button type="submit" class="btn btn-warning">Login</button>
+</form>
+</div>
+{% endif%}
+{% block content%}{% endblock%}

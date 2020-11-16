@@ -1,0 +1,21 @@
+{% extends 'todo_app/base.html' %}
+{% block content%}
+
+<h3> your todos <h3>
+<ul>
+  {% for x in todo%}
+  <center>
+  <li><div class="alert alert-success" role="alert">
+  <a href="{% url 'viewtodo' x.id%}">
+  {% if x.important%}{% endif%}<b> <h3> {{x.title}}</h3><b> {% if x.memo%}<p> <b>-{{x.memo}}<p><b> 
+  
+ {% endif%} 
+  </a>
+  </div>
+  </li>
+  
+  <div class=" dropdown-divider"></div>
+  </center>
+  {% endfor%}
+</ul>
+{% endblock%}
