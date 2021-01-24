@@ -1,3 +1,3 @@
 # Todolist-django
-simple todo list mad using django 
-django python html bootstrap
+simple todo list made using django python html bootstrap 
+
